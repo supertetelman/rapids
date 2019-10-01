@@ -1,7 +1,5 @@
 FROM rapidsai/rapidsai:0.9-cuda10.0-runtime-ubuntu18.04
 
-RUN apt update && apt -y upgrade
-
 RUN source activate rapids && conda install -y -c conda-forge ipywidgets
 RUN source activate rapids && jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
