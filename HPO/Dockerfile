@@ -1,6 +1,10 @@
 FROM rapidsai/rapidsai:0.9-cuda10.0-runtime-ubuntu18.04
 
 RUN apt update && apt -y upgrade
+# Fix font-manager package
+RUN apt-get update && \
+    apt-get install -y --fix-missing font-manager && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN source activate rapids && conda install -y -c conda-forge ipywidgets
 RUN source activate rapids && jupyter labextension install @jupyter-widgets/jupyterlab-manager
